@@ -1,0 +1,37 @@
+<div class="p-5 mb-4 bg-light rounded-3 w-100 mx-auto">
+  <div class="container-fluid py-5 align-middle">
+    <table class="table table-responsive ">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col"><%= @coins.human_attribute_name(:title)  %></th>
+          <th scope="col"><%= @coins.human_attribute_name(:acronyn)  %></th>
+          <th scope="col"><%= @coins.human_attribute_name(:url_image)  %></th>
+          <th scope="col"><%= @coins.human_attribute_name(:price)%> </th>
+          <th scope="col"><%= @coins.human_attribute_name(:quantity)  %></th>
+          <th scope="col"><%= @coins.human_attribute_name(:balance)  %></th>
+          <th scope="col"><%= link_to "Nova moeda", new_coin_path %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @coins.each do |coin| %>
+          <tr>
+            <th scope="row"><%= coin.id %></th>
+            <td><%= coin.title %></td>
+            <td><%= coin.acronyn %></td>
+            <td><%= image_tag( "#{coin.url_image}", size: "100x60") %></td>
+            <td>U$ <%= coin.price.round(4) %></td>
+            <td><%= coin.quantity %></td>
+            <td>U$ <%= coin.balance.round(4) %></td>
+            <td><%= link_to "editar", edit_coin_path(coin.id), class:"btn btn-primary", style:"margin-bottom:5px" %><hr>
+            <%= button_to "apagar", coin_path(coin), class:"btn btn-secondary", method: :delete, data: {turbo_confirm: "Tem certeza que deseja apagar?"} %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= link_to "atualizar preços", refresh_coins_path, class:"btn btn-success" %>
+</div>
+
+
+

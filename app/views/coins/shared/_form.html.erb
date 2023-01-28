@@ -1,0 +1,27 @@
+<div class="p-5 mb-4 bg-light rounded-3 w-75 mx-auto">
+  <div class="container-fluid py-5 align-middle">
+    <h1 class="display-5 fw-bold">Coin Registration</h1>
+    <%= form_with(model:@coin, class:"row g-3", local:true) do |form|%>
+      <div class="col-md-6">
+        <%= form.label :title, class:"form-label" %>
+        <%= form.text_field :title, class:"form-control"%>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :acronyn, class:"form-label" %>
+        <%= form.text_field :acronyn, class:"form-control"%>
+      </div>
+      <div class="col-md-2">
+        <%= form.label :quantity, class:"form-label" %>
+        <%= form.number_field :quantity, class:"form-control", min: 0, step: :any %>
+      </div>
+      <div class="col-12">
+        <%= form.label :url_image, class:"form-label" %>
+        <%= form.text_field :url_image, class:"form-control"%>
+      </div>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Register</button>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<main class="form-signin w-50 m-auto">
+
+<body class="text-center">
+    
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-floating">
+      <%= f.label :email, class:"form-label" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+    </div>
+    <div class="form-floating">
+    <%= f.label :password, class:"form-label"  %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+    </div> <hr>
+    <%= f.submit "Log in", class:"w-100 btn btn-lg btn-primary" %>
+    <p class="mt-5 mb-3 text-muted">© Criado com Bootstrap</p>
+<% end %>
+
+<%= render "users/shared/links" %>
+</main>
